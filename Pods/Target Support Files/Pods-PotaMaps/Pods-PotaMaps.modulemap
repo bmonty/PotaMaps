@@ -1,0 +1,6 @@
+framework module Pods_PotaMaps {
+  umbrella header "Pods-PotaMaps-umbrella.h"
+
+  export *
+  module * { export * }
+}

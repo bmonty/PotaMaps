@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pcP-tt-Kko">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Spotter-->
+        <scene sceneID="Cd5-f5-SyP">
+            <objects>
+                <viewController id="pcP-tt-Kko" customClass="SpotterViewController" customModule="PotaMaps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8mF-HQ-N7S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spotter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBP-Ta-zbv">
+                                <rect key="frame" x="16" y="95" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="jY2-AY-O3C" userLabel="Spotter Entry">
+                                <rect key="frame" x="135" y="91" width="110" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Bi3-ik-AD4"/>
+                                    <constraint firstAttribute="width" constant="110" id="y5h-ac-euv"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="pcP-tt-Kko" id="1cu-tn-Tga"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVk-OE-wTa">
+                                <rect key="frame" x="16" y="151" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="6Mm-nv-cLT" userLabel="Activator Entry">
+                                <rect key="frame" x="135" y="146" width="110" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="BmA-N2-Xli"/>
+                                    <constraint firstAttribute="height" constant="30" id="Kbh-eT-blT"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="pcP-tt-Kko" id="N5D-Xl-KYA"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5c-2b-g4s">
+                                <rect key="frame" x="16" y="207" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hjm-Dm-5pP" userLabel="Frequency Entry">
+                                <rect key="frame" x="135" y="201" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="To3-v9-Qfj"/>
+                                    <constraint firstAttribute="height" constant="30" id="tp6-ib-8ST"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="pcP-tt-Kko" id="D7e-id-Lqi"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjg-Tg-y7m">
+                                <rect key="frame" x="16" y="263" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="3WQ-Qy-oWg" userLabel="Reference Entry">
+                                <rect key="frame" x="135" y="256" width="110" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="B9U-KO-Vf2"/>
+                                    <constraint firstAttribute="width" constant="110" id="QaR-4X-Khg"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="pcP-tt-Kko" id="9DH-2N-Vte"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHI-mO-5mp">
+                                <rect key="frame" x="16" y="319" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="4" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDI-4N-AaA" userLabel="Comments Entry">
+                                <rect key="frame" x="135" y="311" width="224" height="130"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="IQo-Pw-Nra"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="pcP-tt-Kko" id="G8o-UN-vYJ"/>
+                                </connections>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nbq-qn-JfQ">
+                                <rect key="frame" x="121" y="506" width="133" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Submit Spot"/>
+                                <connections>
+                                    <action selector="submitPressed:" destination="pcP-tt-Kko" eventType="touchUpInside" id="h9f-ue-twX"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="BWj-oh-BLu">
+                                <rect key="frame" x="177.5" y="558" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.075249291960000006" green="0.64215189220000002" blue="0.28618708250000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Nbq-qn-JfQ" firstAttribute="centerX" secondItem="8mF-HQ-N7S" secondAttribute="centerX" id="2ZK-8i-hln"/>
+                            <constraint firstItem="FHI-mO-5mp" firstAttribute="top" secondItem="hjg-Tg-y7m" secondAttribute="bottom" constant="35" id="4B0-Vf-4zE"/>
+                            <constraint firstItem="lDI-4N-AaA" firstAttribute="trailing" secondItem="8mF-HQ-N7S" secondAttribute="trailingMargin" id="4pl-PH-l8Y"/>
+                            <constraint firstItem="6Mm-nv-cLT" firstAttribute="top" secondItem="jY2-AY-O3C" secondAttribute="bottom" constant="25" id="5zh-Tc-9n8"/>
+                            <constraint firstItem="BWj-oh-BLu" firstAttribute="centerX" secondItem="8mF-HQ-N7S" secondAttribute="centerX" id="7j6-o6-sfR"/>
+                            <constraint firstItem="jY2-AY-O3C" firstAttribute="leading" secondItem="vMA-an-CQi" secondAttribute="leading" constant="135" id="8rx-09-PwJ"/>
+                            <constraint firstItem="mVk-OE-wTa" firstAttribute="top" secondItem="cBP-Ta-zbv" secondAttribute="bottom" constant="35" id="AXf-46-qCL"/>
+                            <constraint firstItem="hjm-Dm-5pP" firstAttribute="leading" secondItem="vMA-an-CQi" secondAttribute="leading" constant="135" id="BE1-Kq-lht"/>
+                            <constraint firstItem="cBP-Ta-zbv" firstAttribute="top" secondItem="vMA-an-CQi" secondAttribute="top" constant="75" id="GdH-9z-bIo"/>
+                            <constraint firstItem="BWj-oh-BLu" firstAttribute="top" secondItem="Nbq-qn-JfQ" secondAttribute="bottom" constant="10" id="Hcu-Eg-hfP"/>
+                            <constraint firstItem="6Mm-nv-cLT" firstAttribute="leading" secondItem="vMA-an-CQi" secondAttribute="leading" constant="135" id="Mnc-hA-kh0"/>
+                            <constraint firstItem="3WQ-Qy-oWg" firstAttribute="top" secondItem="hjm-Dm-5pP" secondAttribute="bottom" constant="25" id="QcT-ka-IfM"/>
+                            <constraint firstItem="mVk-OE-wTa" firstAttribute="leading" secondItem="vMA-an-CQi" secondAttribute="leading" constant="16" id="T6j-H8-u1f"/>
+                            <constraint firstItem="I5c-2b-g4s" firstAttribute="top" secondItem="mVk-OE-wTa" secondAttribute="bottom" constant="35" id="VDI-Pe-TZb"/>
+                            <constraint firstItem="jY2-AY-O3C" firstAttribute="top" secondItem="vMA-an-CQi" secondAttribute="top" constant="71" id="Xfn-rI-Vy9"/>
+                            <constraint firstItem="hjm-Dm-5pP" firstAttribute="top" secondItem="6Mm-nv-cLT" secondAttribute="bottom" constant="25" id="aNQ-FS-A9R"/>
+                            <constraint firstItem="hjg-Tg-y7m" firstAttribute="top" secondItem="I5c-2b-g4s" secondAttribute="bottom" constant="35" id="c5q-JQ-ZCx"/>
+                            <constraint firstItem="lDI-4N-AaA" firstAttribute="leading" secondItem="FHI-mO-5mp" secondAttribute="trailing" constant="35" id="c9v-gR-I9H"/>
+                            <constraint firstItem="FHI-mO-5mp" firstAttribute="leading" secondItem="vMA-an-CQi" secondAttribute="leading" constant="16" id="hDf-Xt-LRg"/>
+                            <constraint firstItem="Nbq-qn-JfQ" firstAttribute="top" secondItem="lDI-4N-AaA" secondAttribute="bottom" constant="65" id="hvE-6q-mi9"/>
+                            <constraint firstItem="cBP-Ta-zbv" firstAttribute="leading" secondItem="vMA-an-CQi" secondAttribute="leading" constant="16" id="kKa-Sc-tII"/>
+                            <constraint firstItem="I5c-2b-g4s" firstAttribute="leading" secondItem="vMA-an-CQi" secondAttribute="leading" constant="16" id="ma6-LL-IJZ"/>
+                            <constraint firstItem="3WQ-Qy-oWg" firstAttribute="leading" secondItem="vMA-an-CQi" secondAttribute="leading" constant="135" id="poQ-xN-yfQ"/>
+                            <constraint firstItem="hjg-Tg-y7m" firstAttribute="leading" secondItem="vMA-an-CQi" secondAttribute="leading" constant="16" id="tjH-BR-lKC"/>
+                            <constraint firstItem="lDI-4N-AaA" firstAttribute="top" secondItem="3WQ-Qy-oWg" secondAttribute="bottom" constant="25" id="yI2-qY-lNu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vMA-an-CQi"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Spotter" image="spotlight" id="Vgn-MS-zTN"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activatorTextField" destination="6Mm-nv-cLT" id="d71-ts-fkr"/>
+                        <outlet property="activityIndicator" destination="BWj-oh-BLu" id="0yS-Fl-ccM"/>
+                        <outlet property="commentsTextView" destination="lDI-4N-AaA" id="Pou-Mb-Cch"/>
+                        <outlet property="freqTextField" destination="hjm-Dm-5pP" id="BfQ-IK-9NV"/>
+                        <outlet property="referenceTextField" destination="3WQ-Qy-oWg" id="fU4-fD-vgo"/>
+                        <outlet property="spotterTextField" destination="jY2-AY-O3C" id="qAp-JU-wbj"/>
+                        <outlet property="submitButton" destination="Nbq-qn-JfQ" id="noL-5d-LUX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p34-y5-8XN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3330.4000000000001" y="60.719640179910051"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="spotlight" width="45" height="45"/>
+    </resources>
+</document>

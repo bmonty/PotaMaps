@@ -1,0 +1,817 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32A7E3C1E7722AA11809AE4C /* Pods_PotaMapsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6398459ADD0E0B8475942C /* Pods_PotaMapsUITests.framework */; };
+		61B49F3A954369CD101EBFB8 /* Pods_PotaMapsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E855E5033B47135FFA7C86A /* Pods_PotaMapsTests.framework */; };
+		E033F6E421C58C0F004AF732 /* ParkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E033F6E321C58C0F004AF732 /* ParkData.swift */; };
+		E033F6E621C6ACFF004AF732 /* ParkActivationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E033F6E521C6ACFF004AF732 /* ParkActivationDetailCell.swift */; };
+		E03D73A921BDFD890062C785 /* ParkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03D73A821BDFD890062C785 /* ParkDetailView.swift */; };
+		E03D73AB21BF51880062C785 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03D73AA21BF51880062C785 /* LocationManager.swift */; };
+		E05FAB6921BC2F7A003EB9AB /* ParkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05FAB6821BC2F7A003EB9AB /* ParkTableViewCell.swift */; };
+		E06EB7E821C3CF9800E1FD22 /* SpotterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06EB7E721C3CF9800E1FD22 /* SpotterViewController.swift */; };
+		E0CCD7ED21B8240E006A0EED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CCD7EC21B8240E006A0EED /* AppDelegate.swift */; };
+		E0CCD7F221B8240E006A0EED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0CCD7F021B8240E006A0EED /* Main.storyboard */; };
+		E0CCD7F521B8240E006A0EED /* PotaMaps.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0CCD7F321B8240E006A0EED /* PotaMaps.xcdatamodeld */; };
+		E0CCD7F721B82411006A0EED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0CCD7F621B82411006A0EED /* Assets.xcassets */; };
+		E0CCD7FA21B82411006A0EED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0CCD7F821B82411006A0EED /* LaunchScreen.storyboard */; };
+		E0CCD80521B82411006A0EED /* PotaMapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CCD80421B82411006A0EED /* PotaMapsTests.swift */; };
+		E0CCD81021B82411006A0EED /* PotaMapsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CCD80F21B82411006A0EED /* PotaMapsUITests.swift */; };
+		E0CCD81E21BB5ECD006A0EED /* PotaParks+MKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CCD81D21BB5ECD006A0EED /* PotaParks+MKAnnotation.swift */; };
+		E0CCD82221BC2542006A0EED /* ParkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CCD82121BC2542006A0EED /* ParkTableViewController.swift */; };
+		E0D0A3CF21C544D5001B46CE /* Spotter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D0A3D121C544D5001B46CE /* Spotter.storyboard */; };
+		FF644640158945FFDE37E9A4 /* Pods_PotaMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1897792A32D312EE6B7757EF /* Pods_PotaMaps.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E0CCD80121B82411006A0EED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0CCD7E121B8240E006A0EED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0CCD7E821B8240E006A0EED;
+			remoteInfo = PotaMaps;
+		};
+		E0CCD80C21B82411006A0EED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0CCD7E121B8240E006A0EED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0CCD7E821B8240E006A0EED;
+			remoteInfo = PotaMaps;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E855E5033B47135FFA7C86A /* Pods_PotaMapsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotaMapsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11CBB996655145914698EC2B /* Pods-PotaMapsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotaMapsUITests.release.xcconfig"; path = "Target Support Files/Pods-PotaMapsUITests/Pods-PotaMapsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1897792A32D312EE6B7757EF /* Pods_PotaMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotaMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F060D23080FCF4D35E64B2F /* Pods-PotaMapsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotaMapsTests.debug.xcconfig"; path = "Target Support Files/Pods-PotaMapsTests/Pods-PotaMapsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		20C4A5B3D6DB194F14794F91 /* Pods-PotaMapsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotaMapsTests.release.xcconfig"; path = "Target Support Files/Pods-PotaMapsTests/Pods-PotaMapsTests.release.xcconfig"; sourceTree = "<group>"; };
+		5EEE81B3724165777ABB7378 /* Pods-PotaMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotaMaps.release.xcconfig"; path = "Target Support Files/Pods-PotaMaps/Pods-PotaMaps.release.xcconfig"; sourceTree = "<group>"; };
+		66998AED63103197E3F482C0 /* Pods-PotaMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotaMaps.debug.xcconfig"; path = "Target Support Files/Pods-PotaMaps/Pods-PotaMaps.debug.xcconfig"; sourceTree = "<group>"; };
+		9E55B596F95053C353E1740D /* Pods-PotaMapsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotaMapsUITests.debug.xcconfig"; path = "Target Support Files/Pods-PotaMapsUITests/Pods-PotaMapsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DF6398459ADD0E0B8475942C /* Pods_PotaMapsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotaMapsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E033F6E321C58C0F004AF732 /* ParkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkData.swift; sourceTree = "<group>"; };
+		E033F6E521C6ACFF004AF732 /* ParkActivationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkActivationDetailCell.swift; sourceTree = "<group>"; };
+		E03D73A821BDFD890062C785 /* ParkDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetailView.swift; sourceTree = "<group>"; };
+		E03D73AA21BF51880062C785 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E05FAB6821BC2F7A003EB9AB /* ParkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkTableViewCell.swift; sourceTree = "<group>"; };
+		E06EB7E721C3CF9800E1FD22 /* SpotterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotterViewController.swift; sourceTree = "<group>"; };
+		E0CCD7E921B8240E006A0EED /* PotaMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PotaMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0CCD7EC21B8240E006A0EED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E0CCD7F121B8240E006A0EED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E0CCD7F421B8240E006A0EED /* PotaMaps.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PotaMaps.xcdatamodel; sourceTree = "<group>"; };
+		E0CCD7F621B82411006A0EED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E0CCD7F921B82411006A0EED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E0CCD7FB21B82411006A0EED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0CCD80021B82411006A0EED /* PotaMapsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PotaMapsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0CCD80421B82411006A0EED /* PotaMapsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotaMapsTests.swift; sourceTree = "<group>"; };
+		E0CCD80621B82411006A0EED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0CCD80B21B82411006A0EED /* PotaMapsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PotaMapsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0CCD80F21B82411006A0EED /* PotaMapsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotaMapsUITests.swift; sourceTree = "<group>"; };
+		E0CCD81121B82411006A0EED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0CCD81D21BB5ECD006A0EED /* PotaParks+MKAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PotaParks+MKAnnotation.swift"; sourceTree = "<group>"; };
+		E0CCD82121BC2542006A0EED /* ParkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkTableViewController.swift; sourceTree = "<group>"; };
+		E0D0A3D021C544D5001B46CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Spotter.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E0CCD7E621B8240E006A0EED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF644640158945FFDE37E9A4 /* Pods_PotaMaps.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CCD7FD21B82411006A0EED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61B49F3A954369CD101EBFB8 /* Pods_PotaMapsTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CCD80821B82411006A0EED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32A7E3C1E7722AA11809AE4C /* Pods_PotaMapsUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ABE9D7B74E2F0D3955D250EA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				66998AED63103197E3F482C0 /* Pods-PotaMaps.debug.xcconfig */,
+				5EEE81B3724165777ABB7378 /* Pods-PotaMaps.release.xcconfig */,
+				1F060D23080FCF4D35E64B2F /* Pods-PotaMapsTests.debug.xcconfig */,
+				20C4A5B3D6DB194F14794F91 /* Pods-PotaMapsTests.release.xcconfig */,
+				9E55B596F95053C353E1740D /* Pods-PotaMapsUITests.debug.xcconfig */,
+				11CBB996655145914698EC2B /* Pods-PotaMapsUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CAF56341721A51BB73D21D76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1897792A32D312EE6B7757EF /* Pods_PotaMaps.framework */,
+				0E855E5033B47135FFA7C86A /* Pods_PotaMapsTests.framework */,
+				DF6398459ADD0E0B8475942C /* Pods_PotaMapsUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E033F6E721C6CC32004AF732 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E0CCD82121BC2542006A0EED /* ParkTableViewController.swift */,
+				E03D73A821BDFD890062C785 /* ParkDetailView.swift */,
+				E06EB7E721C3CF9800E1FD22 /* SpotterViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E033F6E821C6CC59004AF732 /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E05FAB6821BC2F7A003EB9AB /* ParkTableViewCell.swift */,
+				E033F6E521C6ACFF004AF732 /* ParkActivationDetailCell.swift */,
+			);
+			path = "Table Cells";
+			sourceTree = "<group>";
+		};
+		E05FAB6A21BDB77E003EB9AB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E0CCD7F821B82411006A0EED /* LaunchScreen.storyboard */,
+				E0CCD7F021B8240E006A0EED /* Main.storyboard */,
+				E0D0A3D121C544D5001B46CE /* Spotter.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E0CCD7E021B8240E006A0EED = {
+			isa = PBXGroup;
+			children = (
+				E0CCD7EB21B8240E006A0EED /* PotaMaps */,
+				E0CCD80321B82411006A0EED /* PotaMapsTests */,
+				E0CCD80E21B82411006A0EED /* PotaMapsUITests */,
+				E0CCD7EA21B8240E006A0EED /* Products */,
+				ABE9D7B74E2F0D3955D250EA /* Pods */,
+				CAF56341721A51BB73D21D76 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E0CCD7EA21B8240E006A0EED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E0CCD7E921B8240E006A0EED /* PotaMaps.app */,
+				E0CCD80021B82411006A0EED /* PotaMapsTests.xctest */,
+				E0CCD80B21B82411006A0EED /* PotaMapsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E0CCD7EB21B8240E006A0EED /* PotaMaps */ = {
+			isa = PBXGroup;
+			children = (
+				E0CCD7FB21B82411006A0EED /* Info.plist */,
+				E0CCD7EC21B8240E006A0EED /* AppDelegate.swift */,
+				E033F6E721C6CC32004AF732 /* View Controllers */,
+				E05FAB6A21BDB77E003EB9AB /* Storyboards */,
+				E033F6E821C6CC59004AF732 /* Table Cells */,
+				E03D73AA21BF51880062C785 /* LocationManager.swift */,
+				E033F6E321C58C0F004AF732 /* ParkData.swift */,
+				E0CCD81D21BB5ECD006A0EED /* PotaParks+MKAnnotation.swift */,
+				E0CCD7F621B82411006A0EED /* Assets.xcassets */,
+				E0CCD7F321B8240E006A0EED /* PotaMaps.xcdatamodeld */,
+			);
+			path = PotaMaps;
+			sourceTree = "<group>";
+		};
+		E0CCD80321B82411006A0EED /* PotaMapsTests */ = {
+			isa = PBXGroup;
+			children = (
+				E0CCD80421B82411006A0EED /* PotaMapsTests.swift */,
+				E0CCD80621B82411006A0EED /* Info.plist */,
+			);
+			path = PotaMapsTests;
+			sourceTree = "<group>";
+		};
+		E0CCD80E21B82411006A0EED /* PotaMapsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E0CCD80F21B82411006A0EED /* PotaMapsUITests.swift */,
+				E0CCD81121B82411006A0EED /* Info.plist */,
+			);
+			path = PotaMapsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E0CCD7E821B8240E006A0EED /* PotaMaps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0CCD81421B82411006A0EED /* Build configuration list for PBXNativeTarget "PotaMaps" */;
+			buildPhases = (
+				68B3AA3CA14872B17D49D1F0 /* [CP] Check Pods Manifest.lock */,
+				E0CCD7E521B8240E006A0EED /* Sources */,
+				E0CCD7E621B8240E006A0EED /* Frameworks */,
+				E0CCD7E721B8240E006A0EED /* Resources */,
+				EE5F48DB50EE25957CE1A36B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PotaMaps;
+			productName = PotaMaps;
+			productReference = E0CCD7E921B8240E006A0EED /* PotaMaps.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E0CCD7FF21B82411006A0EED /* PotaMapsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0CCD81721B82411006A0EED /* Build configuration list for PBXNativeTarget "PotaMapsTests" */;
+			buildPhases = (
+				D15548FE2E3E0E9AAF4EB478 /* [CP] Check Pods Manifest.lock */,
+				E0CCD7FC21B82411006A0EED /* Sources */,
+				E0CCD7FD21B82411006A0EED /* Frameworks */,
+				E0CCD7FE21B82411006A0EED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E0CCD80221B82411006A0EED /* PBXTargetDependency */,
+			);
+			name = PotaMapsTests;
+			productName = PotaMapsTests;
+			productReference = E0CCD80021B82411006A0EED /* PotaMapsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E0CCD80A21B82411006A0EED /* PotaMapsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0CCD81A21B82411006A0EED /* Build configuration list for PBXNativeTarget "PotaMapsUITests" */;
+			buildPhases = (
+				AC4C8600C6BD0EB7D4BFF686 /* [CP] Check Pods Manifest.lock */,
+				E0CCD80721B82411006A0EED /* Sources */,
+				E0CCD80821B82411006A0EED /* Frameworks */,
+				E0CCD80921B82411006A0EED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E0CCD80D21B82411006A0EED /* PBXTargetDependency */,
+			);
+			name = PotaMapsUITests;
+			productName = PotaMapsUITests;
+			productReference = E0CCD80B21B82411006A0EED /* PotaMapsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E0CCD7E121B8240E006A0EED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Benjamin Montgomery";
+				TargetAttributes = {
+					E0CCD7E821B8240E006A0EED = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					E0CCD7FF21B82411006A0EED = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = E0CCD7E821B8240E006A0EED;
+					};
+					E0CCD80A21B82411006A0EED = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = E0CCD7E821B8240E006A0EED;
+					};
+				};
+			};
+			buildConfigurationList = E0CCD7E421B8240E006A0EED /* Build configuration list for PBXProject "PotaMaps" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E0CCD7E021B8240E006A0EED;
+			productRefGroup = E0CCD7EA21B8240E006A0EED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E0CCD7E821B8240E006A0EED /* PotaMaps */,
+				E0CCD7FF21B82411006A0EED /* PotaMapsTests */,
+				E0CCD80A21B82411006A0EED /* PotaMapsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E0CCD7E721B8240E006A0EED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0CCD7FA21B82411006A0EED /* LaunchScreen.storyboard in Resources */,
+				E0CCD7F721B82411006A0EED /* Assets.xcassets in Resources */,
+				E0D0A3CF21C544D5001B46CE /* Spotter.storyboard in Resources */,
+				E0CCD7F221B8240E006A0EED /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CCD7FE21B82411006A0EED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CCD80921B82411006A0EED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		68B3AA3CA14872B17D49D1F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PotaMaps-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC4C8600C6BD0EB7D4BFF686 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PotaMapsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D15548FE2E3E0E9AAF4EB478 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PotaMapsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE5F48DB50EE25957CE1A36B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PotaMaps/Pods-PotaMaps-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PotaMaps/Pods-PotaMaps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E0CCD7E521B8240E006A0EED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E033F6E621C6ACFF004AF732 /* ParkActivationDetailCell.swift in Sources */,
+				E0CCD7ED21B8240E006A0EED /* AppDelegate.swift in Sources */,
+				E0CCD81E21BB5ECD006A0EED /* PotaParks+MKAnnotation.swift in Sources */,
+				E03D73A921BDFD890062C785 /* ParkDetailView.swift in Sources */,
+				E0CCD82221BC2542006A0EED /* ParkTableViewController.swift in Sources */,
+				E05FAB6921BC2F7A003EB9AB /* ParkTableViewCell.swift in Sources */,
+				E0CCD7F521B8240E006A0EED /* PotaMaps.xcdatamodeld in Sources */,
+				E033F6E421C58C0F004AF732 /* ParkData.swift in Sources */,
+				E06EB7E821C3CF9800E1FD22 /* SpotterViewController.swift in Sources */,
+				E03D73AB21BF51880062C785 /* LocationManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CCD7FC21B82411006A0EED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0CCD80521B82411006A0EED /* PotaMapsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CCD80721B82411006A0EED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0CCD81021B82411006A0EED /* PotaMapsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E0CCD80221B82411006A0EED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0CCD7E821B8240E006A0EED /* PotaMaps */;
+			targetProxy = E0CCD80121B82411006A0EED /* PBXContainerItemProxy */;
+		};
+		E0CCD80D21B82411006A0EED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0CCD7E821B8240E006A0EED /* PotaMaps */;
+			targetProxy = E0CCD80C21B82411006A0EED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E0CCD7F021B8240E006A0EED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E0CCD7F121B8240E006A0EED /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E0CCD7F821B82411006A0EED /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E0CCD7F921B82411006A0EED /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E0D0A3D121C544D5001B46CE /* Spotter.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E0D0A3D021C544D5001B46CE /* Base */,
+			);
+			name = Spotter.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E0CCD81221B82411006A0EED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E0CCD81321B82411006A0EED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E0CCD81521B82411006A0EED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66998AED63103197E3F482C0 /* Pods-PotaMaps.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DJDL9D8S88;
+				INFOPLIST_FILE = PotaMaps/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMaps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E0CCD81621B82411006A0EED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EEE81B3724165777ABB7378 /* Pods-PotaMaps.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DJDL9D8S88;
+				INFOPLIST_FILE = PotaMaps/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMaps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E0CCD81821B82411006A0EED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F060D23080FCF4D35E64B2F /* Pods-PotaMapsTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DJDL9D8S88;
+				INFOPLIST_FILE = PotaMapsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMapsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PotaMaps.app/PotaMaps";
+			};
+			name = Debug;
+		};
+		E0CCD81921B82411006A0EED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20C4A5B3D6DB194F14794F91 /* Pods-PotaMapsTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DJDL9D8S88;
+				INFOPLIST_FILE = PotaMapsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMapsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PotaMaps.app/PotaMaps";
+			};
+			name = Release;
+		};
+		E0CCD81B21B82411006A0EED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E55B596F95053C353E1740D /* Pods-PotaMapsUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DJDL9D8S88;
+				INFOPLIST_FILE = PotaMapsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMapsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PotaMaps;
+			};
+			name = Debug;
+		};
+		E0CCD81C21B82411006A0EED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11CBB996655145914698EC2B /* Pods-PotaMapsUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DJDL9D8S88;
+				INFOPLIST_FILE = PotaMapsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMapsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PotaMaps;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E0CCD7E421B8240E006A0EED /* Build configuration list for PBXProject "PotaMaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0CCD81221B82411006A0EED /* Debug */,
+				E0CCD81321B82411006A0EED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0CCD81421B82411006A0EED /* Build configuration list for PBXNativeTarget "PotaMaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0CCD81521B82411006A0EED /* Debug */,
+				E0CCD81621B82411006A0EED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0CCD81721B82411006A0EED /* Build configuration list for PBXNativeTarget "PotaMapsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0CCD81821B82411006A0EED /* Debug */,
+				E0CCD81921B82411006A0EED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0CCD81A21B82411006A0EED /* Build configuration list for PBXNativeTarget "PotaMapsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0CCD81B21B82411006A0EED /* Debug */,
+				E0CCD81C21B82411006A0EED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E0CCD7F321B8240E006A0EED /* PotaMaps.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E0CCD7F421B8240E006A0EED /* PotaMaps.xcdatamodel */,
+			);
+			currentVersion = E0CCD7F421B8240E006A0EED /* PotaMaps.xcdatamodel */;
+			path = PotaMaps.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E0CCD7E121B8240E006A0EED /* Project object */;
+}
