@@ -91,7 +91,7 @@ extension ParkTableViewController: UISearchBarDelegate {
 
         parksFetchedResultsController?.fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
             countryPredicate,
-            NSPredicate(format: "name CONTAINS[c] %@", searchText)
+            NSPredicate(format: "name CONTAINS[c] %@ OR reference CONTAINS[c] %@", searchText, searchText)
             ])
 
         searchBar.resignFirstResponder()
