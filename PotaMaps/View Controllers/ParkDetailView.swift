@@ -17,7 +17,7 @@ class ParkDetailView: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var selectedPark: PotaParks?
-    var parkData: ParkData?
+    var parkData: ParkStats?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class ParkDetailView: UIViewController {
 
         tableView.dataSource = self
 
-        parkData = ParkData(for: park.reference!)
+        parkData = ParkStats(for: park.reference!)
         parkData?.delegate = self
     }
 
@@ -54,7 +54,7 @@ class ParkDetailView: UIViewController {
 
 extension ParkDetailView: ParkDataDelegate {
 
-    func parkDataDidUpdate(_ parkData: ParkData) {
+    func parkDataDidUpdate(_ parkData: ParkStats) {
         tableView.reloadData()
     }
 

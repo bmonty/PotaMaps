@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		32A7E3C1E7722AA11809AE4C /* Pods_PotaMapsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6398459ADD0E0B8475942C /* Pods_PotaMapsUITests.framework */; };
 		61B49F3A954369CD101EBFB8 /* Pods_PotaMapsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E855E5033B47135FFA7C86A /* Pods_PotaMapsTests.framework */; };
-		E033F6E421C58C0F004AF732 /* ParkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E033F6E321C58C0F004AF732 /* ParkData.swift */; };
+		E033F6E421C58C0F004AF732 /* ParkStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E033F6E321C58C0F004AF732 /* ParkStats.swift */; };
 		E033F6E621C6ACFF004AF732 /* ParkActivationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E033F6E521C6ACFF004AF732 /* ParkActivationDetailCell.swift */; };
 		E03D73A921BDFD890062C785 /* ParkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03D73A821BDFD890062C785 /* ParkDetailView.swift */; };
 		E03D73AB21BF51880062C785 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03D73AA21BF51880062C785 /* LocationManager.swift */; };
 		E05A7DC821E170AE00746D99 /* SpotterFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05A7DC721E170AE00746D99 /* SpotterFormController.swift */; };
+		E05A7DCB21E98EA300746D99 /* ParkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05A7DCA21E98EA300746D99 /* ParkData.swift */; };
 		E05FAB6921BC2F7A003EB9AB /* ParkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05FAB6821BC2F7A003EB9AB /* ParkTableViewCell.swift */; };
 		E0CCD7ED21B8240E006A0EED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CCD7EC21B8240E006A0EED /* AppDelegate.swift */; };
 		E0CCD7F221B8240E006A0EED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0CCD7F021B8240E006A0EED /* Main.storyboard */; };
@@ -55,11 +56,12 @@
 		66998AED63103197E3F482C0 /* Pods-PotaMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotaMaps.debug.xcconfig"; path = "Target Support Files/Pods-PotaMaps/Pods-PotaMaps.debug.xcconfig"; sourceTree = "<group>"; };
 		9E55B596F95053C353E1740D /* Pods-PotaMapsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotaMapsUITests.debug.xcconfig"; path = "Target Support Files/Pods-PotaMapsUITests/Pods-PotaMapsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF6398459ADD0E0B8475942C /* Pods_PotaMapsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotaMapsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E033F6E321C58C0F004AF732 /* ParkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkData.swift; sourceTree = "<group>"; };
+		E033F6E321C58C0F004AF732 /* ParkStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkStats.swift; sourceTree = "<group>"; };
 		E033F6E521C6ACFF004AF732 /* ParkActivationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkActivationDetailCell.swift; sourceTree = "<group>"; };
 		E03D73A821BDFD890062C785 /* ParkDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetailView.swift; sourceTree = "<group>"; };
 		E03D73AA21BF51880062C785 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E05A7DC721E170AE00746D99 /* SpotterFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotterFormController.swift; sourceTree = "<group>"; };
+		E05A7DCA21E98EA300746D99 /* ParkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkData.swift; sourceTree = "<group>"; };
 		E05FAB6821BC2F7A003EB9AB /* ParkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkTableViewCell.swift; sourceTree = "<group>"; };
 		E0CCD7E921B8240E006A0EED /* PotaMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PotaMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0CCD7EC21B8240E006A0EED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,15 @@
 			path = "Table Cells";
 			sourceTree = "<group>";
 		};
+		E05A7DC921E98E3E00746D99 /* Park Information */ = {
+			isa = PBXGroup;
+			children = (
+				E033F6E321C58C0F004AF732 /* ParkStats.swift */,
+				E05A7DCA21E98EA300746D99 /* ParkData.swift */,
+			);
+			path = "Park Information";
+			sourceTree = "<group>";
+		};
 		E05FAB6A21BDB77E003EB9AB /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,9 +199,9 @@
 				E0CCD7EC21B8240E006A0EED /* AppDelegate.swift */,
 				E033F6E721C6CC32004AF732 /* View Controllers */,
 				E05FAB6A21BDB77E003EB9AB /* Storyboards */,
+				E05A7DC921E98E3E00746D99 /* Park Information */,
 				E033F6E821C6CC59004AF732 /* Table Cells */,
 				E03D73AA21BF51880062C785 /* LocationManager.swift */,
-				E033F6E321C58C0F004AF732 /* ParkData.swift */,
 				E0CCD81D21BB5ECD006A0EED /* PotaParks+MKAnnotation.swift */,
 				E0CCD7F621B82411006A0EED /* Assets.xcassets */,
 				E0CCD7F321B8240E006A0EED /* PotaMaps.xcdatamodeld */,
@@ -456,7 +467,8 @@
 				E0CCD82221BC2542006A0EED /* ParkTableViewController.swift in Sources */,
 				E05FAB6921BC2F7A003EB9AB /* ParkTableViewCell.swift in Sources */,
 				E0CCD7F521B8240E006A0EED /* PotaMaps.xcdatamodeld in Sources */,
-				E033F6E421C58C0F004AF732 /* ParkData.swift in Sources */,
+				E033F6E421C58C0F004AF732 /* ParkStats.swift in Sources */,
+				E05A7DCB21E98EA300746D99 /* ParkData.swift in Sources */,
 				E05A7DC821E170AE00746D99 /* SpotterFormController.swift in Sources */,
 				E03D73AB21BF51880062C785 /* LocationManager.swift in Sources */,
 			);

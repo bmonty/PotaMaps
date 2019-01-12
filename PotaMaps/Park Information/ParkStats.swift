@@ -11,10 +11,10 @@ import Alamofire
 import Kanna
 
 protocol ParkDataDelegate: AnyObject {
-    func parkDataDidUpdate(_ parkData: ParkData)
+    func parkDataDidUpdate(_ parkData: ParkStats)
 }
 
-class ParkData: NSObject {
+class ParkStats: NSObject {
 
     /// POTA park ID (i.e. K-1234).
     var reference: String
