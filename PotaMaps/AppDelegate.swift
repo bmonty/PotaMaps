@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
-    private func preloadData() {
+    private func preloadData(notificationCenter: NotificationCenter = .default) {
         let preloadedDataKey = "didPreloadData"
         let userDefaults = UserDefaults.standard
 
@@ -85,6 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
 
                     userDefaults.set(true, forKey: preloadedDataKey)
+                    DispatchQueue.main.async {
+                        notificationCenter.post(name: .dataLoaded, object: nil)
+                    }
                 }
             } catch {
                 print(error.localizedDescription)
@@ -139,3 +142,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension Notification.Name {
+
+    static var dataLoaded: Notification.Name {
+        return .init(rawValue: "PotaMaps.dataLoaded")
+    }
+
+}

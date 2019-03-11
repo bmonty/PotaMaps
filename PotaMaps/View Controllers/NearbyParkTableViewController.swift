@@ -26,50 +26,67 @@ class NearbyParkTableViewController: UIViewController {
         super.viewDidLoad()
 
         locationService.addLocationChangeObserver(self) { observer, service, location in
-            do {
-                let parks = try observer.parkData.getParks(withinRange: 90000.0, ofLocation: location.coordinate)
-
-                // within 5 miles
-                var parksWithinFive = parks.filter {
-                    let distance = observer.distanceToPark($0, from: location)
-                    return distance <= (8047.0)
-                }
-                parksWithinFive.sort {
-                    return observer.sortParkByDistance($0, $1, location)
-                }
-                observer.parkList[5] = parksWithinFive
-
-                // within 25 miles
-                var parksWithinTwentyFive = parks.filter {
-                    let distance = observer.distanceToPark($0, from: location)
-                    return distance > (8047.0) && distance <= (40234.0)
-                }
-                parksWithinTwentyFive.sort {
-                    return observer.sortParkByDistance($0, $1, location)
-                }
-                observer.parkList[25] = parksWithinTwentyFive
-
-                // within 50 miles
-                var parksWithinFiftyMiles = parks.filter {
-                    let distance = observer.distanceToPark($0, from: location)
-                    return distance > (40234.0) && distance <= (80468.0)
-                }
-                parksWithinFiftyMiles.sort {
-                    return observer.sortParkByDistance($0, $1, location)
-                }
-                observer.parkList[50] = parksWithinFiftyMiles
-
-                observer.tableView.reloadData()
-            } catch {
-                observer.failedToGetParkData()
-            }
+            observer.loadParkData(forNearByParks: location)
         }
         locationService.startService(for: .whenInUse)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(newDataLoaded),
+                                               name: .dataLoaded,
+                                               object: nil)
+    }
+
+    /// Called to handle a notification that new park data is loaded.
+    @objc private func newDataLoaded(_ notification: Notification) {
+        if locationService.isAuthorized {
+            guard let location = locationService.currentLocation else { return }
+            loadParkData(forNearByParks: location)
+        }
     }
 
     private func failedToGetParkData() {
         // This is what I call a "KD5JGD moment"!
         print("Failed to get park data!")
+    }
+
+    private func loadParkData(forNearByParks location: CLLocation) {
+        do {
+            let parks = try parkData.getParks(withinRange: 90000.0, ofLocation: location.coordinate)
+
+            // within 5 miles
+            var parksWithinFive = parks.filter {
+            let distance = distanceToPark($0, from: location)
+            return distance <= (8047.0)
+            }
+            parksWithinFive.sort {
+            return sortParkByDistance($0, $1, location)
+            }
+            parkList[5] = parksWithinFive
+
+            // within 25 miles
+            var parksWithinTwentyFive = parks.filter {
+            let distance = distanceToPark($0, from: location)
+            return distance > (8047.0) && distance <= (40234.0)
+            }
+            parksWithinTwentyFive.sort {
+            return sortParkByDistance($0, $1, location)
+            }
+            parkList[25] = parksWithinTwentyFive
+
+            // within 50 miles
+            var parksWithinFiftyMiles = parks.filter {
+            let distance = distanceToPark($0, from: location)
+            return distance > (40234.0) && distance <= (80468.0)
+            }
+            parksWithinFiftyMiles.sort {
+            return sortParkByDistance($0, $1, location)
+            }
+            parkList[50] = parksWithinFiftyMiles
+
+            tableView.reloadData()
+        } catch {
+            failedToGetParkData()
+        }
     }
 
     private func distanceToPark(_ park: PotaParks, from location: CLLocation) -> CLLocationDistance {
