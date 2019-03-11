@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dgp-Yo-RZw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Parks-->
+        <scene sceneID="2J6-UD-oK5">
+            <objects>
+                <viewController id="BYm-4H-ufd" customClass="ParkSearchTableViewController" customModule="PotaMaps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ktN-xR-6sX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsp-UF-bXT">
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" placeholder="Enter park name" translatesAutoresizingMaskIntoConstraints="NO" id="NoJ-sH-1JX">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <color key="barTintColor" name="POTADarkGreen"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYm-4H-ufd" id="kWl-Yk-D8r"/>
+                                        </connections>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8eQ-UV-e1l">
+                                        <rect key="frame" x="0.0" y="57" width="375" height="437"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParkCell" rowHeight="70" id="7qa-D6-La9" customClass="ParkTableViewCell" customModule="PotaMaps" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7qa-D6-La9" id="gPg-bH-n5f">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K-3503" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQs-4x-y8v">
+                                                            <rect key="frame" x="14" y="10.5" width="61" height="48.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dzo-fS-ldr">
+                                                            <rect key="frame" x="83" y="10.5" width="79.5" height="48.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Park Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vF-8K-uJA">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="79.5" height="18.5"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Park Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfd-B9-qgc" userLabel="Park Type Label">
+                                                                    <rect key="frame" x="0.0" y="19.5" width="79.5" height="29"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="29" id="LSO-Vc-qmF"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="JQs-4x-y8v" firstAttribute="bottom" secondItem="Dzo-fS-ldr" secondAttribute="bottom" id="13A-NI-Gkk"/>
+                                                        <constraint firstItem="Dzo-fS-ldr" firstAttribute="leading" secondItem="JQs-4x-y8v" secondAttribute="trailing" constant="8" symbolic="YES" id="VFV-PZ-tO2"/>
+                                                        <constraint firstItem="JQs-4x-y8v" firstAttribute="leading" secondItem="gPg-bH-n5f" secondAttribute="leadingMargin" constant="-1" id="W4d-bW-zkx"/>
+                                                        <constraint firstItem="JQs-4x-y8v" firstAttribute="centerY" secondItem="gPg-bH-n5f" secondAttribute="centerY" id="bDH-Vu-B6I"/>
+                                                        <constraint firstItem="JQs-4x-y8v" firstAttribute="bottom" secondItem="gPg-bH-n5f" secondAttribute="bottomMargin" id="mpn-ZY-zv9"/>
+                                                        <constraint firstItem="JQs-4x-y8v" firstAttribute="top" secondItem="Dzo-fS-ldr" secondAttribute="top" id="oWG-3U-lqF"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.97278910880000002" green="0.95209723710000005" blue="0.8995515704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <outlet property="nameLabel" destination="9vF-8K-uJA" id="n69-Uw-4ar"/>
+                                                    <outlet property="parkTypeLabel" destination="qfd-B9-qgc" id="ydV-dX-eSE"/>
+                                                    <outlet property="referenceLabel" destination="JQs-4x-y8v" id="iMB-Zg-Bli"/>
+                                                    <segue destination="Vel-1K-lj3" kind="show" id="u0Y-F5-lI7"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8eQ-UV-e1l" firstAttribute="bottom" secondItem="Dsp-UF-bXT" secondAttribute="bottomMargin" id="4mp-MD-5Cw"/>
+                                    <constraint firstItem="NoJ-sH-1JX" firstAttribute="leading" secondItem="Dsp-UF-bXT" secondAttribute="leading" id="5E8-aF-kh3"/>
+                                    <constraint firstItem="8eQ-UV-e1l" firstAttribute="centerY" secondItem="Dsp-UF-bXT" secondAttribute="centerY" id="9c0-se-RbB"/>
+                                    <constraint firstItem="NoJ-sH-1JX" firstAttribute="trailing" secondItem="8eQ-UV-e1l" secondAttribute="trailing" id="RN5-QF-hOj"/>
+                                    <constraint firstItem="NoJ-sH-1JX" firstAttribute="top" secondItem="Dsp-UF-bXT" secondAttribute="top" id="Sh7-0E-YBt"/>
+                                    <constraint firstItem="NoJ-sH-1JX" firstAttribute="leading" secondItem="8eQ-UV-e1l" secondAttribute="leading" id="T1z-Vu-KpF"/>
+                                    <constraint firstItem="8eQ-UV-e1l" firstAttribute="top" secondItem="NoJ-sH-1JX" secondAttribute="bottom" constant="1" id="g0F-HC-YMU"/>
+                                    <constraint firstItem="NoJ-sH-1JX" firstAttribute="centerX" secondItem="Dsp-UF-bXT" secondAttribute="centerX" id="lyV-vI-5Rq"/>
+                                    <constraint firstAttribute="trailing" secondItem="NoJ-sH-1JX" secondAttribute="trailing" id="s6N-v1-sYl"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Dsp-UF-bXT" firstAttribute="leading" secondItem="ktN-xR-6sX" secondAttribute="leading" id="7HT-Qd-EUV"/>
+                            <constraint firstItem="Dsp-UF-bXT" firstAttribute="top" secondItem="Tlq-cT-ku9" secondAttribute="top" id="AiO-e1-yZb"/>
+                            <constraint firstAttribute="bottom" secondItem="Dsp-UF-bXT" secondAttribute="bottom" id="jgO-PD-bV6"/>
+                            <constraint firstAttribute="trailing" secondItem="Dsp-UF-bXT" secondAttribute="trailing" id="k2K-s5-T6G"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tlq-cT-ku9"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search Parks" id="3lr-Ko-Le0"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="NoJ-sH-1JX" id="4A0-ZW-YC0"/>
+                        <outlet property="tableView" destination="8eQ-UV-e1l" id="O7k-F6-3R8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fxZ-j4-3hi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="622" y="125"/>
+        </scene>
+        <!--ParkDetail-->
+        <scene sceneID="DIE-pt-Gy0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ParkDetail" id="Vel-1K-lj3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eCD-6R-Ba0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1199" y="124"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fAp-R1-rzN">
+            <objects>
+                <navigationController id="dgp-Yo-RZw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="96u-pF-Jvh"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="od2-p1-j5e">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="POTADarkGreen"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYm-4H-ufd" kind="relationship" relationship="rootViewController" id="bte-6I-2a5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iG1-Jn-xan" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-220" y="126"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="POTADarkGreen">
+            <color red="0.29800000786781311" green="0.68599998950958252" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

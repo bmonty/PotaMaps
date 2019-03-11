@@ -43,7 +43,7 @@ class ParkData {
 
         // get initial list of parks from CoreData
         let fetchRequest: NSFetchRequest<PotaParks> = PotaParks.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "locationName", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
             NSPredicate(format: "latitude BETWEEN {%lf, %lf}", searchCriteria["latLower"]!, searchCriteria["latUpper"]!),
             NSPredicate(format: "longitude BETWEEN {%lf, %lf}", searchCriteria["longLower"]!, searchCriteria["longUpper"]!),
@@ -59,6 +59,26 @@ class ParkData {
         // refine list of parks for requested range
         let searchRegion = CLCircularRegion(center: location, radius: CLLocationDistance(range), identifier: "parkSearchRadius")
         return initialResult.filter { searchRegion.contains($0.coordinate) }
+    }
+
+    /// Search for parks by name.
+    ///
+    /// - parameter name: the string to search for in park names
+    func searchParks(with name: String) -> [PotaParks]? {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+        let fetchRequest: NSFetchRequest<PotaParks> = PotaParks.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@", name)
+
+        var searchResult: [PotaParks]
+        do {
+            searchResult = try appDelegate.persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            return nil
+        }
+
+        return searchResult
     }
 
     /**
