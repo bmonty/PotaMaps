@@ -173,16 +173,17 @@ class SpotterFormController: FormViewController {
         guard let activator = values["activator"] as? String else { return }
         guard let freq = values["freq"] as? String else { return }
         guard let reference = values["reference"] as? String else { return }
-        guard let comments = values["comments"] as? String else { return }
 
-        let parameters: Parameters = [
+        var parameters: Parameters = [
             "spotter": spotter,
             "activator": activator,
             "frequency": freq,
             "reference": reference,
-            "comments": comments,
             "submit": "Submit+Spot"
         ]
+        if values["comments"] != nil {
+            parameters["comments"] = values["comments"]!
+        }
 
         let request = Alamofire.request("https://pota.us/spots_add_form_handler.php",
                                         method: .post,
