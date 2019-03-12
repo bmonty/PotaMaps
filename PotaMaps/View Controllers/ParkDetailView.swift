@@ -17,7 +17,7 @@ class ParkDetailView: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var selectedPark: PotaParks?
-    var parkData: ParkStats?
+    var parkStats: ParkStats?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +38,8 @@ class ParkDetailView: UIViewController {
 
         tableView.dataSource = self
 
-        parkData = ParkStats(for: park.reference!)
-        parkData?.delegate = self
+        parkStats = ParkStats(for: park.reference!)
+        parkStats?.delegate = self
     }
 
     @IBAction func directionsToParkPressed(_ sender: Any) {
@@ -52,9 +52,9 @@ class ParkDetailView: UIViewController {
 
 }
 
-extension ParkDetailView: ParkDataDelegate {
+extension ParkDetailView: ParkStatsDelegate {
 
-    func parkDataDidUpdate(_ parkData: ParkStats) {
+    func parkStatsDidUpdate(_ parkData: ParkStats) {
         tableView.reloadData()
     }
 
@@ -67,7 +67,7 @@ extension ParkDetailView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let parkData = parkData else { return 0 }
+        guard let parkData = parkStats else { return 0 }
         guard let data = parkData.data else { return 0 }
 
         if !parkData.isActivated {
@@ -78,15 +78,15 @@ extension ParkDetailView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let parkData = parkData else { return tableView.dequeueReusableCell(withIdentifier: "ParkActivationNoData")! }
+        guard let parkStats = parkStats else { return tableView.dequeueReusableCell(withIdentifier: "ParkActivationNoData")! }
 
         // return "no data" cell if the park has never been activated
-        if !parkData.isActivated {
+        if !parkStats.isActivated {
             return tableView.dequeueReusableCell(withIdentifier: "ParkActivationNoData")!
         }
 
         // return a cell with data
-        if let cellData = parkData.data?[indexPath.row] {
+        if let cellData = parkStats.data?[indexPath.row] {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ParkActivationDetail", for: indexPath) as! ParkActivationDetailCell
             cell.callsignLabel.text = cellData["callsign"] as? String
 

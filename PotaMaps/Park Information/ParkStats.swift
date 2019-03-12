@@ -10,8 +10,8 @@ import Foundation
 import Alamofire
 import Kanna
 
-protocol ParkDataDelegate: AnyObject {
-    func parkDataDidUpdate(_ parkData: ParkStats)
+protocol ParkStatsDelegate: AnyObject {
+    func parkStatsDidUpdate(_ parkData: ParkStats)
 }
 
 class ParkStats: NSObject {
@@ -21,7 +21,7 @@ class ParkStats: NSObject {
     var data: [[String: Any]]?
     /// Indicates if this park has been activated.
     var isActivated: Bool = false
-    var delegate: ParkDataDelegate?
+    var delegate: ParkStatsDelegate?
 
     /// URL for Parks on the Air stats.
     private let statsUrl = "https://stats.parksontheair.com/reports/park-activity-history.php"
@@ -101,7 +101,7 @@ class ParkStats: NSObject {
 
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.delegate?.parkDataDidUpdate(self)
+                self.delegate?.parkStatsDidUpdate(self)
             }
         }
     }
