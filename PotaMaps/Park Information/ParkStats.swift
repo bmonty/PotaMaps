@@ -48,6 +48,14 @@ class ParkStats: NSObject {
                     if let html = response.result.value {
                         self.parseHtml(html: html)
                     }
+
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+
+                        self.observations.dataLoaded.values.forEach { closure in
+                            closure(self)
+                        }
+                    }
                     break
                 case .failure(let error):
                     print(error)
@@ -97,14 +105,6 @@ class ParkStats: NSObject {
             }
 
             self.data = parkActivities
-
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-
-                self.observations.dataLoaded.values.forEach { closure in
-                    closure(self)
-                }
-            }
         }
     }
 
