@@ -39,7 +39,26 @@ class ParkDetailView: UIViewController {
         tableView.dataSource = self
 
         parkStats = ParkStats(for: park.reference!)
-        parkStats?.delegate = self
+        parkStats?.addParkStatsDownloadedObserver(self, closure: { observer, parkStats in
+            // sort the new park data so it's shown with newest activation first
+            parkStats.data?.sort(by: {first, second in
+                guard let firstDate = first["date"] as? Date else {
+                    return false
+                }
+
+                guard let secondDate = second["date"] as? Date else {
+                    return false
+                }
+
+                if firstDate > secondDate {
+                    return true
+                } else {
+                    return false
+                }
+            })
+
+            observer.tableView.reloadData()
+        })
     }
 
     @IBAction func directionsToParkPressed(_ sender: Any) {
@@ -48,14 +67,6 @@ class ParkDetailView: UIViewController {
         let placeMark = MKPlacemark(coordinate: park.coordinate)
         let mapItem = MKMapItem(placemark: placeMark)
         mapItem.openInMaps(launchOptions: nil)
-    }
-
-}
-
-extension ParkDetailView: ParkStatsDelegate {
-
-    func parkStatsDidUpdate(_ parkData: ParkStats) {
-        tableView.reloadData()
     }
 
 }
