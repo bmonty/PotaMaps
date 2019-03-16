@@ -40,6 +40,23 @@ class ParkDetailView: UIViewController {
 
         parkStats = ParkStats(for: park.reference!)
         parkStats?.addParkStatsDownloadedObserver(self, closure: { observer, parkStats in
+            // sort the new park data so it's shown with newest activation first
+            parkStats.data?.sort(by: {first, second in
+                guard let firstDate = first["date"] as? Date else {
+                    return false
+                }
+
+                guard let secondDate = second["date"] as? Date else {
+                    return false
+                }
+
+                if firstDate > secondDate {
+                    return true
+                } else {
+                    return false
+                }
+            })
+
             observer.tableView.reloadData()
         })
     }
