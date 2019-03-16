@@ -10,10 +10,6 @@ import Foundation
 import Alamofire
 import Kanna
 
-protocol ParkStatsDelegate: AnyObject {
-    func parkStatsDidUpdate(_ parkData: ParkStats)
-}
-
 class ParkStats: NSObject {
 
     /// POTA park ID (i.e. K-1234).
@@ -21,10 +17,13 @@ class ParkStats: NSObject {
     var data: [[String: Any]]?
     /// Indicates if this park has been activated.
     var isActivated: Bool = false
-    var delegate: ParkStatsDelegate?
 
     /// URL for Parks on the Air stats.
     private let statsUrl = "https://stats.parksontheair.com/reports/park-activity-history.php"
+
+    private var observations = (
+        dataLoaded: [UUID: (ParkStats) -> Void]()
+    )
 
     init(for parkReference: String) {
         self.reference = parkReference
@@ -101,8 +100,35 @@ class ParkStats: NSObject {
 
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.delegate?.parkStatsDidUpdate(self)
+
+                self.observations.dataLoaded.values.forEach { closure in
+                    closure(self)
+                }
             }
+        }
+    }
+
+}
+
+extension ParkStats {
+
+    @discardableResult func addParkStatsDownloadedObserver<T: AnyObject> (
+        _ observer: T,
+        closure: @escaping (T, ParkStats) -> Void
+        ) -> ObservationToken {
+        let id = UUID()
+
+        observations.dataLoaded[id] = { [weak self, weak observer] parkStats in
+            guard let observer = observer else {
+                self?.observations.dataLoaded.removeValue(forKey: id)
+                return
+            }
+
+            closure(observer, self!)
+        }
+
+        return ObservationToken {[weak self] in
+            self?.observations.dataLoaded.removeValue(forKey: id)
         }
     }
 
