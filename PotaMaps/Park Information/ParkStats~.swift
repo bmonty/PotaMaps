@@ -19,7 +19,6 @@ class ParkStats: NSObject {
     var isActivated: Bool = false
 
     /// URL for Parks on the Air stats.
-    // /park/activityhistory/{reference}
     private let statsUrl = "https://stats.parksontheair.com/reports/park-activity-history.php"
 
     private var observations = (

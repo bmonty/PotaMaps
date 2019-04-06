@@ -19,7 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }(LocationService())
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        preloadData()
+        let userDefaults = UserDefaults.standard
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+
+        var mainStoryboard: UIStoryboard
+        if userDefaults.bool(forKey: "dataLoaded") == false {
+            mainStoryboard = UIStoryboard(name: "LoadingData", bundle: nil)
+        } else {
+            mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        }
+
+        let viewController = mainStoryboard.instantiateInitialViewController()
+        self.window?.rootViewController = viewController
+        self.window?.makeKeyAndVisible()
 
         return true
     }
@@ -46,53 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
-    }
-
-    private func preloadData(notificationCenter: NotificationCenter = .default) {
-        let preloadedDataKey = "didPreloadData"
-        let userDefaults = UserDefaults.standard
-
-        if userDefaults.bool(forKey: preloadedDataKey) == false {
-            // get park data
-            guard let parkData = NSDataAsset(name: "POTAParkList") else {
-                return
-            }
-
-            let backgroundContext = persistentContainer.newBackgroundContext()
-            persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
-
-            do {
-                let json = try JSON(data: parkData.data)
-
-                backgroundContext.perform {
-                    for (_, park):(String, JSON) in json {
-                        let newPark = PotaParks(context: backgroundContext)
-
-                        newPark.reference = park["reference"].string
-                        newPark.name = park["name"].string
-                        newPark.latitude = park["latitude"].double!
-                        newPark.longitude = park["longitude"].double!
-                        newPark.country = park["entityName"].string
-                        newPark.locationDesc = park["locationDesc"].string
-                        newPark.locationName = park["locationName"].string
-                        newPark.parktypeDesc = park["parktypeDesc"].string
-                    }
-
-                    do {
-                        try backgroundContext.save()
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-
-                    userDefaults.set(true, forKey: preloadedDataKey)
-                    DispatchQueue.main.async {
-                        notificationCenter.post(name: .dataLoaded, object: nil)
-                    }
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
     }
 
     // MARK: - Core Data stack
