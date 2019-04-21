@@ -18,49 +18,41 @@ class ParkDetailView: UIViewController {
 
     var selectedPark: PotaParks?
     var parkStats: ParkStats?
+    var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let park = selectedPark else {
-            return
-        }
+        // get the park data from the segue
+        guard let park = selectedPark else { return }
 
+        // set up the header labels
         self.title = park.reference
         parkNameLabel.text = park.name
         parkTypeLabel.text = park.parktypeDesc
 
+        // set up the map
         let region = MKCoordinateRegion(center: park.coordinate,
                                         latitudinalMeters: 40000,
                                         longitudinalMeters: 40000)
         mapView.setRegion(region, animated: false)
         mapView.addAnnotation(park)
 
-        tableView.dataSource = self
-
+        // create the parkStats object and set up the observer
         parkStats = ParkStats(for: park.reference!)
         parkStats?.addParkStatsDownloadedObserver(self, closure: { observer, parkStats in
-            // sort the new park data so it's shown with newest activation first
-            parkStats.data?.sort(by: {first, second in
-                guard let firstDate = first["date"] as? Date else {
-                    return false
-                }
-
-                guard let secondDate = second["date"] as? Date else {
-                    return false
-                }
-
-                if firstDate > secondDate {
-                    return true
-                } else {
-                    return false
-                }
-            })
-
             observer.tableView.reloadData()
         })
+
+        // set up tableView
+        tableView.tableFooterView = UIView()
+        tableView.dataSource = self
+
+        // setup load timer
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(cancelDownload), userInfo: nil, repeats: false)
     }
 
+    /// Handles the user pressing the "Get Directions to Park" button.
     @IBAction func directionsToParkPressed(_ sender: Any) {
         guard let park = selectedPark else { return }
 
@@ -69,76 +61,64 @@ class ParkDetailView: UIViewController {
         mapItem.openInMaps(launchOptions: nil)
     }
 
+    /// Handles a timeout for the API load.
+    @objc func cancelDownload() {
+        parkStats = nil
+        tableView.reloadData()
+    }
+
 }
 
 extension ParkDetailView: UITableViewDataSource {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let parkData = parkStats else { return 0 }
-        guard let data = parkData.data else { return 0 }
+        // if parkStats isn't available, return 1 so info can be shown
+        guard let parkStats = parkStats else { return 1 }
 
-        if !parkData.isActivated {
+        // return 1, to show the appropriate info cell
+        if !parkStats.isActivated || !parkStats.isLoaded {
             return 1
         }
 
-        return data.count
+        // data is available, so return the actual number of activations
+        return parkStats.activities.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let parkStats = parkStats else { return tableView.dequeueReusableCell(withIdentifier: "ParkActivationNoData")! }
+        // return "no data" cell if parkStats isn't avilable
+        guard let parkStats = parkStats else { return tableView.dequeueReusableCell(withIdentifier: "ParkActivationNoData", for: indexPath) }
 
-        // return "no data" cell if the park has never been activated
+        // return "data loading" cell if park data is not loaded
+        if !parkStats.isLoaded {
+            return tableView.dequeueReusableCell(withIdentifier: "ParkActivationLoading", for: indexPath)
+        }
+
+        // if code gets here, the park data has been loaded and the timer is no
+        // longer required
+        timer?.invalidate()
+
+        // return "never activated" cell if the park has never been activated
         if !parkStats.isActivated {
-            return tableView.dequeueReusableCell(withIdentifier: "ParkActivationNoData")!
+            return tableView.dequeueReusableCell(withIdentifier: "ParkActivationNeverActivated", for: indexPath)
         }
 
         // return a cell with data
-        if let cellData = parkStats.data?[indexPath.row] {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ParkActivationDetail", for: indexPath) as! ParkActivationDetailCell
-            cell.callsignLabel.text = cellData["callsign"] as? String
+        tableView.separatorStyle = .singleLine
+        let cellData = parkStats.activities[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ParkActivationDetail", for: indexPath) as! ParkActivationDetailCell
 
-            if let date = cellData["date"] as? Date {
-                let dateFormatter = DateFormatter()
-                dateFormatter.timeStyle = .none
-                dateFormatter.dateStyle = .medium
-                cell.dateLabel.text = dateFormatter.string(from: date)
-            } else {
-                cell.dateLabel.text = "Unk"
-            }
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .short
 
-            if let cwQsos = cellData["cwQso"] as? Int {
-                cell.cwQsoLabel.text = String(cwQsos)
-            } else {
-                cell.cwQsoLabel.text = "Unk"
-            }
+        cell.callsignLabel.text = cellData.callsign
+        cell.dateLabel.text = dateFormatter.string(from: cellData.date)
+        cell.cwQsoLabel.text = "\(cellData.cwQSO)"
+        cell.dataQsoLabel.text = "\(cellData.dataQSO)"
+        cell.phoneQsoLabel.text = "\(cellData.phoneQSO)"
+        cell.totalQsoLabel.text = "\(cellData.totalQSO)"
 
-            if let dataQsos = cellData["dataQso"] as? Int {
-                cell.dataQsoLabel.text = String(dataQsos)
-            } else {
-                cell.dataQsoLabel.text = "Unk"
-            }
-
-            if let phoneQsos = cellData["phoneQso"] as? Int {
-                cell.phoneQsoLabel.text = String(phoneQsos)
-            } else {
-                cell.phoneQsoLabel.text = "Unk"
-            }
-
-            if let totalQsos = cellData["totalQso"] as? Int {
-                cell.totalQsoLabel.text = String(totalQsos)
-            } else {
-                cell.totalQsoLabel.text = "Unk"
-            }
-
-            return cell
-        }
-
-        // default is to return the "no data" cell
-        return tableView.dequeueReusableCell(withIdentifier: "ParkActivationNoData")!
+        return cell
     }
 
 }
