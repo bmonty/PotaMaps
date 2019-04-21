@@ -6,7 +6,7 @@ target 'PotaMaps' do
 
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire', '~> 4.7.3'
-  pod 'Eureka', '~> 4.3.1'
+  pod 'Eureka', '~> 5.0.0'
 
   target 'PotaMapsTests' do
     inherit! :search_paths
