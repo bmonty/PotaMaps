@@ -11,42 +11,91 @@ import UIKit
 
 class LoadingDataViewController: UIViewController {
 
-
+    // MARK: - IBOutlets
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var failedDownloadLabel: UILabel!
+    @IBOutlet weak var retryButton: UIButton!
 
+    // MARK: - ⛔️ Private Variables
+    /// Reference to `ParkData` for accessing park information.
     private let parkData = ParkData()
-
+    /// Tracks if the view is observing a `ParkData` object.
+    private var parkDataObservationToken: ObservationToken? = nil
+    /// POTA logo to show in the view.
     let potaLogoImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "POTALogo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false  // enable autolayout
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    /// POTA logo's X anchor.
     private var potaLogoXAnchor: NSLayoutConstraint?
+    /// POTA logo's Y anchor.
     private var potaLogoYAnchor: NSLayoutConstraint?
+    /// POTA logo's height anchor.
     private var potaLogoHeightAnchor: NSLayoutConstraint?
+    /// POTA logo's width anchor.
     private var potaLogoWidthAnchor: NSLayoutConstraint?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - UIView Overrides
+    // Configure UI elements.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-        progressLabel.text = "Preparing to download park data..."
-        parkData.addParkDataProgressObserver(self, closure: self.updateProgress)
+        configureProgressView()
+        configureProgressLabel()
+        configurePotaLogo()
+    }
+
+    // Animate the POTA logo and show the download progress UI.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // Animate the POTA logo movement
+        animatePotaLogo(completion: {[weak self] _ in
+            guard let self = self else { return }
+
+            UIView.animate(withDuration: 0.8) { [weak self] in
+                guard let self = self else { return }
+
+                // show the progress UI
+                self.progressView.alpha = 1.0
+                self.progressLabel.alpha = 1.0
+
+                // start the download process
+                self.progressLabel.text = "Preparing to download park data..."
+                self.executeDatabaseUpdate(forProgram: "k")
+            }
+        })
+    }
+
+    // MARK: - Actions and Callbacks
+    /// Execute the database download process.
+    ///
+    /// - parameter program: the park program (i.e. "k", "ve", etc.) to download
+    private func executeDatabaseUpdate(forProgram program: String) {
+        // setup to observe progress notifications from the download
+        if parkDataObservationToken == nil {
+            parkDataObservationToken = parkData.addParkDataProgressObserver(self, closure: self.updateProgress)
+        }
 
         // execute the park data download process, transition to the park view
         // if successful or tell the user about problems if unsuccessful
         parkData.downloadParkData(
-            forProgram: "k",
+            forProgram: program,
             withProgress: self.updateProgress,
             completion: { [weak self] result in
                 guard let self = self else { return }
 
                 switch(result) {
                 case .success:
+                    // stop observing parkData
+                    self.parkDataObservationToken?.cancel()
+
                     // update user defaults
-                    let userDefaults = UserDefaults.standard
-                    userDefaults.set(true, forKey: "dataLoaded")
+                    let defaults = UserDefaults.standard
+                    defaults.set(true, forKey: "dataLoaded")
 
                     // load the UI
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -60,29 +109,80 @@ class LoadingDataViewController: UIViewController {
                 case .failure(let error):
                     self.handleDownloadError(error)
                 }
-            })
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        configureProgressView()
-        configureProgressLabel()
-        configurePotaLogo()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        animatePotaLogo(completion: {[weak self] _ in
-            guard let self = self else { return }
-            UIView.animate(withDuration: 2.0) {
-                self.progressView.alpha = 1.0
-                self.progressLabel.alpha = 1.0
-            }
         })
     }
 
+    /// Update the progress tracker.
+    ///
+    /// - parameter progress: Updated `ParkDataProgressMessage`
+    private func updateProgress(_ progress: ParkData.ParkDataProgressMessage) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.progressLabel.text = progress.message
+            if progress.percent != nil {
+                self.progressView.progress = Float(progress.percent!)
+            } else {
+                self.progressView.progress = 0
+            }
+        }
+    }
+
+    /// Handle error from the data loading process.
+    private func handleDownloadError(_ error: ParkDataError) {
+        progressView.progress = 0
+
+        // hide the progress info...
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            guard let self = self else { return }
+
+            self.progressView.alpha = 0
+            self.progressLabel.alpha = 0
+            }, completion: { [weak self] _ in
+                // ...and show the retry info
+                guard let self = self else { return }
+
+                self.progressView.isHidden = true
+                self.progressLabel.isHidden = true
+
+                self.failedDownloadLabel.isHidden = false
+                self.failedDownloadLabel.alpha = 1
+                self.retryButton.isHidden = false
+                self.retryButton.alpha = 1
+        })
+
+        self.retryButton.isUserInteractionEnabled = true
+    }
+
+    // MARK: - IBActions
+    @IBAction func retryTouched(_ sender: Any) {
+        // hide the error message
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            guard let self = self else { return }
+
+            self.failedDownloadLabel.isHidden = true
+            self.failedDownloadLabel.alpha = 0
+            self.retryButton.isHidden = true
+            self.retryButton.alpha = 1
+            }, completion: { [weak self] _ in
+                guard let self = self else { return }
+
+                UIView.animate(withDuration: 0.5, animations: { [weak self] in
+                    guard let self = self else { return }
+
+                    self.progressView.alpha = 1
+                    self.progressView.isHidden = false
+                    self.progressLabel.alpha = 1
+                    self.progressLabel.isHidden = false
+                })
+
+                // start the download process
+                self.progressLabel.text = "Preparing to download park data..."
+                self.executeDatabaseUpdate(forProgram: "k")
+        })
+    }
+
+    // MARK: - 🎉 UI Setup and Animations
     /// Set initial contsraints on the POTA Logo.
     private func configurePotaLogo() {
         view.addSubview(potaLogoImageView)
@@ -144,31 +244,8 @@ class LoadingDataViewController: UIViewController {
         UIView.animate(withDuration: 1.8,
                        delay: 0,
                        options: .curveEaseOut,
-                       animations: {
-                        self.view.layoutIfNeeded()
-                       },
+                       animations: { self.view.layoutIfNeeded() },
                        completion: completion)
     }
 
-    /// Update the progress tracker.
-    ///
-    /// - parameter progress: Updated `ParkDataProgressMessage`
-    private func updateProgress(_ progress: ParkData.ParkDataProgressMessage) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            
-            self.progressLabel.text = progress.message
-            if progress.percent != nil {
-                self.progressView.progress = Float(progress.percent!)
-            } else {
-                self.progressView.progress = 0
-            }
-        }
-    }
-
-    /// Handle error from the data loading process.
-    private func handleDownloadError(_ error: ParkDataError) {
-        progressView.progress = 0
-        progressLabel.text = error.localizedDescription
-    }
 }

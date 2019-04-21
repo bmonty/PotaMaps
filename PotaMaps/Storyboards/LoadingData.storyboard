@@ -39,13 +39,39 @@
                                     <accessibilityTraits key="traits" notEnabled="YES" updatesFrequently="YES"/>
                                 </accessibility>
                             </progressView>
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="f3s-5A-EfK" userLabel="Retry Button">
+                                <rect key="frame" x="117" y="563" width="141" height="67"/>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
+                                <state key="normal" title="Retry Download">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="retryTouched:" destination="lWO-YJ-dYp" eventType="touchDown" id="M6f-DZ-c0W"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The park database update failed.  Please make sure you have a network connection and then retry the download." lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSz-S4-g2v">
+                                <rect key="frame" x="16" y="304" width="343" height="59"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="POTALightGreen"/>
+                        <constraints>
+                            <constraint firstItem="qXh-zb-uYw" firstAttribute="bottom" secondItem="f3s-5A-EfK" secondAttribute="bottom" constant="37" id="77l-Zt-F2S"/>
+                            <constraint firstItem="qXh-zb-uYw" firstAttribute="trailing" secondItem="XSz-S4-g2v" secondAttribute="trailing" constant="16" id="8pz-nL-MkW"/>
+                            <constraint firstItem="f3s-5A-EfK" firstAttribute="centerX" secondItem="ESW-KY-wOf" secondAttribute="centerX" id="Den-xt-NKf"/>
+                            <constraint firstItem="XSz-S4-g2v" firstAttribute="centerY" secondItem="ESW-KY-wOf" secondAttribute="centerY" id="MyN-0L-vxx"/>
+                            <constraint firstItem="f3s-5A-EfK" firstAttribute="top" secondItem="qXh-zb-uYw" secondAttribute="top" constant="543" id="e4x-X6-yPY"/>
+                            <constraint firstItem="XSz-S4-g2v" firstAttribute="leading" secondItem="qXh-zb-uYw" secondAttribute="leading" constant="16" id="tGE-tI-gBE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qXh-zb-uYw"/>
                     </view>
                     <connections>
+                        <outlet property="failedDownloadLabel" destination="XSz-S4-g2v" id="Y0z-wm-4LQ"/>
                         <outlet property="progressLabel" destination="s0b-Af-Mfp" id="4lS-Xe-XQn"/>
                         <outlet property="progressView" destination="kPv-m4-kQa" id="ktv-BQ-y7x"/>
+                        <outlet property="retryButton" destination="f3s-5A-EfK" id="yXK-Zb-z0T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUx-xi-OQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
