@@ -22,6 +22,7 @@ class ParkSearchTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.tableFooterView = UIView()
         tableView.dataSource = self
     }
 

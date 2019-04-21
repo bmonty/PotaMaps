@@ -187,8 +187,8 @@
 				E0CCD7F021B8240E006A0EED /* Main.storyboard */,
 				E0FB193F21EBF9280055BF94 /* NearbyParkList.storyboard */,
 				E0FB193A21EBF2F90055BF94 /* ParkSearch.storyboard */,
-				E0D0A3D121C544D5001B46CE /* Spotter.storyboard */,
 				E0FB193821EBF15F0055BF94 /* ParkDetail.storyboard */,
+				E0D0A3D121C544D5001B46CE /* Spotter.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
