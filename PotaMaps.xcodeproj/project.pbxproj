@@ -15,6 +15,8 @@
 		E033F6E621C6ACFF004AF732 /* ParkActivationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E033F6E521C6ACFF004AF732 /* ParkActivationDetailCell.swift */; };
 		E03D73A921BDFD890062C785 /* ParkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03D73A821BDFD890062C785 /* ParkDetailView.swift */; };
 		E03D73AB21BF51880062C785 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03D73AA21BF51880062C785 /* LocationService.swift */; };
+		E047BE2E22483E7700410A33 /* LoadingData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E047BE2D22483E7600410A33 /* LoadingData.storyboard */; };
+		E047BE3022483E8600410A33 /* LoadingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E047BE2F22483E8600410A33 /* LoadingDataViewController.swift */; };
 		E05A7DC821E170AE00746D99 /* SpotterFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05A7DC721E170AE00746D99 /* SpotterFormController.swift */; };
 		E05A7DCB21E98EA300746D99 /* ParkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05A7DCA21E98EA300746D99 /* ParkData.swift */; };
 		E05FAB6921BC2F7A003EB9AB /* ParkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05FAB6821BC2F7A003EB9AB /* ParkTableViewCell.swift */; };
@@ -68,6 +70,8 @@
 		E033F6E521C6ACFF004AF732 /* ParkActivationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkActivationDetailCell.swift; sourceTree = "<group>"; };
 		E03D73A821BDFD890062C785 /* ParkDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetailView.swift; sourceTree = "<group>"; };
 		E03D73AA21BF51880062C785 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		E047BE2D22483E7600410A33 /* LoadingData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingData.storyboard; sourceTree = "<group>"; };
+		E047BE2F22483E8600410A33 /* LoadingDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingDataViewController.swift; sourceTree = "<group>"; };
 		E05A7DC721E170AE00746D99 /* SpotterFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotterFormController.swift; sourceTree = "<group>"; };
 		E05A7DCA21E98EA300746D99 /* ParkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkData.swift; sourceTree = "<group>"; };
 		E05FAB6821BC2F7A003EB9AB /* ParkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkTableViewCell.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 		E033F6E721C6CC32004AF732 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E047BE2F22483E8600410A33 /* LoadingDataViewController.swift */,
 				E0CCD82121BC2542006A0EED /* NearbyParkTableViewController.swift */,
 				E01F6DEC21F669020073A3EC /* ParkSearchTableViewController.swift */,
 				E03D73A821BDFD890062C785 /* ParkDetailView.swift */,
@@ -178,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				E0CCD7F821B82411006A0EED /* LaunchScreen.storyboard */,
+				E047BE2D22483E7600410A33 /* LoadingData.storyboard */,
 				E0CCD7F021B8240E006A0EED /* Main.storyboard */,
 				E0FB193F21EBF9280055BF94 /* NearbyParkList.storyboard */,
 				E0FB193A21EBF2F90055BF94 /* ParkSearch.storyboard */,
@@ -317,13 +323,16 @@
 				TargetAttributes = {
 					E0CCD7E821B8240E006A0EED = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					E0CCD7FF21B82411006A0EED = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = E0CCD7E821B8240E006A0EED;
 					};
 					E0CCD80A21B82411006A0EED = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = E0CCD7E821B8240E006A0EED;
 					};
 				};
@@ -358,6 +367,7 @@
 				E0FB194021EBF9280055BF94 /* NearbyParkList.storyboard in Resources */,
 				E0FB193B21EBF2F90055BF94 /* ParkSearch.storyboard in Resources */,
 				E0D0A3CF21C544D5001B46CE /* Spotter.storyboard in Resources */,
+				E047BE2E22483E7700410A33 /* LoadingData.storyboard in Resources */,
 				E0CCD7F221B8240E006A0EED /* Main.storyboard in Resources */,
 				E0FB193921EBF1600055BF94 /* ParkDetail.storyboard in Resources */,
 			);
@@ -483,6 +493,7 @@
 			files = (
 				E01F6DED21F669020073A3EC /* ParkSearchTableViewController.swift in Sources */,
 				E033F6E621C6ACFF004AF732 /* ParkActivationDetailCell.swift in Sources */,
+				E047BE3022483E8600410A33 /* LoadingDataViewController.swift in Sources */,
 				E0CCD7ED21B8240E006A0EED /* AppDelegate.swift in Sources */,
 				E0FB193721EBC4660055BF94 /* ObservationToken.swift in Sources */,
 				E0CCD81E21BB5ECD006A0EED /* PotaParks+MKAnnotation.swift in Sources */,
@@ -608,7 +619,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -663,7 +674,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -681,13 +692,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DJDL9D8S88;
 				INFOPLIST_FILE = PotaMaps/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMaps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -700,13 +712,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DJDL9D8S88;
 				INFOPLIST_FILE = PotaMaps/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMaps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -727,7 +740,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMapsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PotaMaps.app/PotaMaps";
 			};
@@ -749,7 +762,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMapsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PotaMaps.app/PotaMaps";
 			};
@@ -770,7 +783,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMapsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = PotaMaps;
 			};
@@ -791,7 +804,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = montynet.org.PotaMapsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = PotaMaps;
 			};
