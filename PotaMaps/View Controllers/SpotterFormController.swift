@@ -21,6 +21,7 @@ class SpotterFormController: FormViewController {
         tableView?.backgroundColor = UIColor(named: "POTADarkGreen")
 
         form
+            // MARK: Spotter Field
             +++ Section()
                 <<< TextRow() {
                     $0.title = "Spotter"
@@ -62,6 +63,7 @@ class SpotterFormController: FormViewController {
                         self.displayErrorsForText(row, cell)
                     }
 
+            // MARK: Activator Field
             +++ Section()
                 <<< TextRow() {
                     $0.title = "Activator"
@@ -103,6 +105,7 @@ class SpotterFormController: FormViewController {
                         self.displayErrorsForText(row, cell)
                     }
 
+            // MARK: Frequency Field
             +++ Section()
                 <<< DecimalRow() {
                     $0.title = "Frequency"
@@ -143,6 +146,7 @@ class SpotterFormController: FormViewController {
                     cell.textField.keyboardType = .decimalPad
                 }
 
+            // MARK: Park Reference Field
             +++ Section()
                 <<< SegmentedRow<String>() {
                     $0.title = "Park Prefix"
@@ -193,6 +197,7 @@ class SpotterFormController: FormViewController {
                     cell.textField.keyboardType = .numberPad
                 }
 
+            // MARK: Comment Field
             +++ Section("Comment")
                 <<< TextAreaRow() {
                     $0.placeholder = "Enter a comment for this spot."
@@ -218,6 +223,7 @@ class SpotterFormController: FormViewController {
                     $0.trailingSwipe.performsFirstActionWithFullSwipe = true
                 }
 
+            // MARK: Submit Button
             +++ Section()
                 <<< ButtonRow() {
                     $0.title = "Submit Spot"
