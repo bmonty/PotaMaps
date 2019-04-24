@@ -266,7 +266,7 @@ class ParkData {
 
         let fetchRequest: NSFetchRequest<PotaParks> = PotaParks.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@", name)
+        fetchRequest.predicate = NSPredicate(format: "(name CONTAINS[cd] %@) OR (reference CONTAINS %@)", name, name)
 
         var searchResult: [PotaParks]
         do {
