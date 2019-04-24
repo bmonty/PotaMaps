@@ -1,4 +1,4 @@
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'PotaMaps' do
 
@@ -6,7 +6,6 @@ target 'PotaMaps' do
 
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire', '~> 4.7.3'
-  pod 'Kanna', '~> 4.0.0'
   pod 'Eureka', '~> 4.3.1'
 
   target 'PotaMapsTests' do
