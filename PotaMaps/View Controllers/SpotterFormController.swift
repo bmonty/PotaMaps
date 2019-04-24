@@ -107,7 +107,7 @@ class SpotterFormController: FormViewController {
 
             // MARK: Frequency Field
             +++ Section()
-                <<< DecimalRow() {
+                <<< TextRow() {
                     $0.title = "Frequency"
                     $0.tag = "freq"
                     $0.placeholder = "1.234.50"
@@ -117,12 +117,10 @@ class SpotterFormController: FormViewController {
                     $0.cellUpdate { [unowned self] cell, row in
                         cell.textLabel?.font = UIFont(name: "GillSans", size: 18)
                         cell.textField.font = self.makeTextEntryFont()
-                    }
 
-                    // text formatting
-                    let freqFormatter = NumberFormatter()
-                    freqFormatter.usesGroupingSeparator = true
-                    $0.formatter = freqFormatter
+                        // set the keyboard type to a decimal number pad
+                        cell.textField.keyboardType = .decimalPad
+                    }
 
                     // swipe action
                     let clearAction = SwipeAction(
@@ -138,7 +136,7 @@ class SpotterFormController: FormViewController {
                     $0.trailingSwipe.performsFirstActionWithFullSwipe = true
 
                     // validation
-                    var rules = RuleSet<Double>()
+                    var rules = RuleSet<String>()
                     rules.add(rule: RuleRequired(msg: "A frequency is required."))
                     $0.add(ruleSet: rules)
                     $0.validationOptions = .validatesOnChangeAfterBlurred
@@ -158,22 +156,19 @@ class SpotterFormController: FormViewController {
                     $0.cell.backgroundColor = UIColor(named: "POTABackground")
                 }
 
-                <<< IntRow() {
+                <<< TextRow() {
                     $0.title = "Park Reference"
                     $0.tag = "reference"
+                    $0.placeholder = "1234"
 
                     // cell formatting
                     $0.cell.backgroundColor = UIColor(named: "POTABackground")
                     $0.cellUpdate { [unowned self] cell, row in
                         cell.textLabel?.font = UIFont(name: "GillSans", size: 18)
                         cell.textField.font = self.makeTextEntryFont()
-                    }
 
-                    // text formatting
-                    let numberFormatter = NumberFormatter()
-                    numberFormatter.groupingSeparator = ""
-                    $0.useFormatterDuringInput = true
-                    $0.formatter = numberFormatter
+                        cell.textField.keyboardType = .numberPad
+                    }
 
                     // swipe action
                     let clearAction = SwipeAction(
@@ -189,7 +184,7 @@ class SpotterFormController: FormViewController {
                     $0.trailingSwipe.performsFirstActionWithFullSwipe = true
 
                     // validation
-                    var rules = RuleSet<Int>()
+                    var rules = RuleSet<String>()
                     rules.add(rule: RuleRequired(msg: "A park reference is required."))
                     $0.add(ruleSet: rules)
                     $0.validationOptions = .validatesOnChangeAfterBlurred
