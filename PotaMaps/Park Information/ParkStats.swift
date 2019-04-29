@@ -79,9 +79,9 @@ class ParkStats: NSObject {
 
     /// URL to download park data as json.
     #if DEBUG
-    private let parkDataUrl = "https://ckeigvfx4l.execute-api.us-west-2.amazonaws.com/Prod/park/activityhistory/"
+    private let parkDataUrl = "https://devapi.pota.us/Prod/park/activityhistory/"
     #else
-    private let parkDataUrl = "https://fuumou4zcf.execute-api.us-west-2.amazonaws.com/Prod/park/activityhistory/"
+    private let parkDataUrl = "https://api.pota.us/Prod/park/activityhistory/"
     #endif
 
     /// Dictionary of observers for the `ParkStats` instance.
