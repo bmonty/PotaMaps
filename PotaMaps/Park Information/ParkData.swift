@@ -47,9 +47,9 @@ class ParkData {
 
     /// URL to download park data as json.
     #if DEBUG
-    private let parkDataUrl = "https://ckeigvfx4l.execute-api.us-west-2.amazonaws.com/Prod/park/program"
+    private let parkDataUrl = "https://devapi.pota.us/Prod/park/program"
     #else
-    private let parkDataUrl = "https://fuumou4zcf.execute-api.us-west-2.amazonaws.com/Prod/park/program"
+    private let parkDataUrl = "https://api.pota.us/Prod/park/program"
     #endif
 
     private var observations = (
