@@ -15,7 +15,8 @@ class NearbyParkTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var parkData = ParkData()
-    var parkList: [Int: [PotaParks]] = [:]
+    var parkList = [PotaParks]()
+    var distance = 5
 
     private var locationService: LocationService {
         return AppDelegate.locationManager
@@ -25,10 +26,12 @@ class NearbyParkTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        locationService.addLocationChangeObserver(self) { observer, service, location in
-            observer.loadParkData(forNearByParks: location)
+        locationService.addLocationChangeObserver(self) { [unowned self] observer, service, location in
+            observer.loadParkData(forNearByParks: location, atDistance: self.distance)
         }
         locationService.startService(for: .whenInUse)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Range", style: .plain, target: self, action: #selector(changeRange))
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(newDataLoaded),
@@ -40,7 +43,29 @@ class NearbyParkTableViewController: UIViewController {
     @objc private func newDataLoaded(_ notification: Notification) {
         if locationService.isAuthorized {
             guard let location = locationService.currentLocation else { return }
-            loadParkData(forNearByParks: location)
+            loadParkData(forNearByParks: location, atDistance: distance)
+        }
+    }
+
+    @objc func changeRange() {
+        let ac = UIAlertController(title: "Select Range", message: nil, preferredStyle: .actionSheet)
+
+        ac.addAction(UIAlertAction(title: "5 miles", style: .default, handler: changeDistance))
+        ac.addAction(UIAlertAction(title: "25 miles", style: .default, handler: changeDistance))
+        ac.addAction(UIAlertAction(title: "50 miles", style: .default, handler: changeDistance))
+        ac.addAction(UIAlertAction(title: "100 miles", style: .default, handler: changeDistance))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        present(ac, animated: true)
+    }
+
+    func changeDistance(action: UIAlertAction) {
+        if locationService.isAuthorized {
+            guard let location = locationService.currentLocation else { return }
+
+            let distance = String(action.title?.split(separator: " ")[0] ?? "5")
+            self.distance = Int(string: distance) ?? 5
+            loadParkData(forNearByParks: location, atDistance: self.distance)
         }
     }
 
@@ -49,39 +74,21 @@ class NearbyParkTableViewController: UIViewController {
         print("Failed to get park data!")
     }
 
-    private func loadParkData(forNearByParks location: CLLocation) {
+    private func loadParkData(forNearByParks location: CLLocation, atDistance distance: Int) {
         do {
-            let parks = try parkData.getParks(withinRange: 90000.0, ofLocation: location.coordinate)
+            let distanceInMeters = Double(distance + 10) * 1609.344
+            let parks = try parkData.getParks(withinRange: distanceInMeters, ofLocation: location.coordinate)
 
-            // within 5 miles
-            var parksWithinFive = parks.filter {
-            let distance = distanceToPark($0, from: location)
-            return distance <= (8047.0)
+            parkList = parks.filter {
+                let distance = distanceToPark($0, from: location)
+                return distance <= Double(self.distance) * 1609.344
             }
-            parksWithinFive.sort {
-            return sortParkByDistance($0, $1, location)
-            }
-            parkList[5] = parksWithinFive
 
-            // within 25 miles
-            var parksWithinTwentyFive = parks.filter {
-            let distance = distanceToPark($0, from: location)
-            return distance > (8047.0) && distance <= (40234.0)
+            parkList.sort { [unowned self] in
+                let first = self.distanceToPark($0, from: self.locationService.currentLocation!)
+                let second = self.distanceToPark($1, from: self.locationService.currentLocation!)
+                return first < second
             }
-            parksWithinTwentyFive.sort {
-            return sortParkByDistance($0, $1, location)
-            }
-            parkList[25] = parksWithinTwentyFive
-
-            // within 50 miles
-            var parksWithinFiftyMiles = parks.filter {
-            let distance = distanceToPark($0, from: location)
-            return distance > (40234.0) && distance <= (80468.0)
-            }
-            parksWithinFiftyMiles.sort {
-            return sortParkByDistance($0, $1, location)
-            }
-            parkList[50] = parksWithinFiftyMiles
 
             tableView.reloadData()
         } catch {
@@ -90,8 +97,7 @@ class NearbyParkTableViewController: UIViewController {
     }
 
     private func distanceToPark(_ park: PotaParks, from location: CLLocation) -> CLLocationDistance {
-        let parkLocation = CLLocation(latitude: park.latitude, longitude: park.longitude)
-        return parkLocation.distance(from: location)
+        return CLLocation(latitude: park.latitude, longitude: park.longitude).distance(from: location)
     }
 
     private func sortParkByDistance(_ first: PotaParks, _ second: PotaParks, _ location: CLLocation) -> Bool {
@@ -110,10 +116,7 @@ class NearbyParkTableViewController: UIViewController {
         }
 
         let destination = segue.destination as! ParkDetailView
-        let sortedKeys = parkList.keys.sorted()
-        let parks = parkList[sortedKeys[indexPath.section]]
-        let park = parks?[indexPath.row]
-        destination.selectedPark = park
+        destination.selectedPark = parkList[indexPath.row]
     }
 
 }
@@ -121,41 +124,34 @@ class NearbyParkTableViewController: UIViewController {
 extension NearbyParkTableViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return parkList.keys.count
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sortedKeys = parkList.keys.sorted()
-        return parkList[sortedKeys[section]]?.count ?? 0
+        return parkList.count
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sortedKeys = parkList.keys.sorted()
-        let distanceString = String(sortedKeys[section])
-        return "parks within \(distanceString) miles"
+        return "parks within \(distance) miles"
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ParkCellWithDistance", for: indexPath) as! ParkTableViewCellWithDistance
 
-        let sortedKeys = parkList.keys.sorted()
-        let parks = parkList[sortedKeys[indexPath.section]]
-        let park = parks?[indexPath.row]
+        let park = parkList[indexPath.row]
 
-        cell.referenceLabel.text = park?.reference
-        cell.nameLabel.text = park?.name
-        cell.parkTypeLabel.text = park?.parktypeDesc
+        cell.referenceLabel.text = park.reference
+        cell.nameLabel.text = park.name
+        cell.parkTypeLabel.text = park.parktypeDesc
 
         // set park distance info, if possible
-        if let parkLatitude = park?.coordinate.latitude, let parkLongitude = park?.coordinate.longitude {
-            if locationService.currentLocation != nil {
-                let parkLocation = CLLocation(latitude: parkLatitude, longitude: parkLongitude)
-                let distanceInMeters = parkLocation.distance(from: locationService.currentLocation!)
-                let distanceInMiles = distanceInMeters / 1609.344
+        if locationService.currentLocation != nil {
+            let parkLocation = CLLocation(latitude: park.coordinate.latitude, longitude: park.coordinate.longitude)
+            let distanceInMeters = parkLocation.distance(from: locationService.currentLocation!)
+            let distanceInMiles = distanceInMeters / 1609.344
 
-                cell.distanceLabel.text = String(format: "%.2f Mi", distanceInMiles)
-                cell.distanceLabel.isHidden = false
-            }
+            cell.distanceLabel.text = String(format: "%.2f Mi", distanceInMiles)
+            cell.distanceLabel.isHidden = false
         }
 
         return cell
